@@ -15,7 +15,8 @@ export default defineConfig(({ mode }) => {
       plugins: [react()],
       define: {
         'process.env.API_KEY': JSON.stringify(apiKey),
-        'process.env.DEEPSEEK_API_KEY': JSON.stringify(apiKey)
+        'process.env.DEEPSEEK_API_KEY': JSON.stringify(apiKey),
+        'import.meta.env.VITE_DEEPSEEK_API_KEY': JSON.stringify(apiKey)
       },
       envPrefix: 'VITE_',
       resolve: {

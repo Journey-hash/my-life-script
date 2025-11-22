@@ -15,9 +15,10 @@ const getVibePrompt = (vibe: VibeType): string => {
 
 export const generateLifeScript = async (request: ScriptRequest): Promise<ScriptResponse> => {
   // 获取 DeepSeek API Key
-  const apiKey = (import.meta.env.VITE_DEEPSEEK_API_KEY || 
-                  (typeof process !== 'undefined' && process.env?.DEEPSEEK_API_KEY) ||
-                  (typeof process !== 'undefined' && process.env?.API_KEY)) as string | undefined;
+  // 在构建时，Vite 会将 process.env.DEEPSEEK_API_KEY 替换为实际值
+  const apiKey = (typeof process !== 'undefined' && process.env?.DEEPSEEK_API_KEY) ||
+                 (typeof process !== 'undefined' && process.env?.API_KEY) ||
+                 (import.meta.env.VITE_DEEPSEEK_API_KEY) as string | undefined;
   
   if (!apiKey || apiKey === 'your_api_key_here' || apiKey === 'undefined' || apiKey === 'null') {
     console.error("API Key 未配置或无效。当前值:", apiKey);
