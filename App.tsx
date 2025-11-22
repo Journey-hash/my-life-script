@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { EnvelopeInput } from './components/EnvelopeInput';
 import { LoadingTunnel } from './components/LoadingTunnel';
 import { ScriptDisplay } from './components/ScriptDisplay';
-import { generateLifeScript } from './services/geminiService';
+import { generateLifeScript } from './services/deepseekService';
 import { ScriptRequest, ScriptResponse } from './types';
 
 type ViewState = 'INPUT' | 'LOADING' | 'RESULT';
@@ -26,7 +26,7 @@ export default function App() {
       console.error("生成剧本时出错:", err);
       const errorMessage = err instanceof Error ? err.message : "Unknown error";
       if (errorMessage.includes("API Key")) {
-        setError("API Key 未配置。请检查 .env.local 文件中的 GEMINI_API_KEY 设置。");
+        setError("API Key 未配置。请检查 .env.local 文件中的 DEEPSEEK_API_KEY 设置。");
       } else {
         setError(`无法连接到时间线: ${errorMessage}。请重试。`);
       }

@@ -30,7 +30,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
-          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY || '' }}
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY || '' }}
         continue-on-error: false
           
       - name: Setup Pages
